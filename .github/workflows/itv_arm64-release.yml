@@ -6,7 +6,7 @@ on:
       docker_images:
         description: 'Live'
         required: true
-        default: 'alpine:latest,alpine/curl,busybox:stable-glibc'
+        default: 'livetv:latest,alpine/curl,busybox:stable-glibc'
 
 jobs:
   pull_and_package:
@@ -30,14 +30,14 @@ jobs:
 
       - name: Download Live.zip from remote URL
         run: |
-          curl -L -o Live.zip https://raw.githubusercontent.com/sunyis/dockerdb/refs/heads/master/Live.zip
+          curl -L -o Live.zip https://raw.githubusercontent.com/sunyis/dockerdb/refs/heads/master/livetv-1.8.zip
 
       - name: List generated files (debug step)
         run: |
           echo "Preparing docker images list (.tar.gz) files:"
           find $GITHUB_WORKSPACE -name "*.tar.gz"
-          echo "Preparing Live.zip file:"
-          find $GITHUB_WORKSPACE -name "Live.zip"
+          echo "Preparing livetv-1.8.zip file:"
+          find $GITHUB_WORKSPACE -name "livetv-1.8.zip"
           release_name=$(TZ="Asia/Shanghai" date +'%Y-%m-%d %H:%M Build')
           echo "RELEASE_NAME=$release_name" >> $GITHUB_ENV
 
@@ -69,6 +69,6 @@ jobs:
         uses: softprops/action-gh-release@v2.1.0
         with:
           tag_name: DockerTarBuilder-ARM64
-          files: ${{ github.workspace }}/Live.zip
+          files: ${{ github.workspace }}/livetv-1.8.zip
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
