@@ -6,7 +6,7 @@ on:
       docker_images:
         description: 'Live'
         required: true
-        default: 'livetv:latest,alpine/curl,busybox:stable-glibc'
+        default: 'alpine:latest,alpine/curl,busybox:stable-glibc'
 
 jobs:
   pull_and_package:
