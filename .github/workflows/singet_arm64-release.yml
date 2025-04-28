@@ -30,7 +30,7 @@ jobs:
 
       - name: Download singet.zip from remote URL
         run: |
-          curl -L -o singet.zip https://raw.githubusercontent.com/sunyis/dockerdb/refs/heads/master/singet-master.zip 
+          curl -L -o singet.zip https://raw.githubusercontent.com/sunyis/dockerdb/refs/heads/master/livetv-master.zip
 
       - name: List generated files (debug step)
         run: |
